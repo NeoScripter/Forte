@@ -7,5 +7,14 @@
         "ikkez/f3-validation-engine": "^1.7",
         "ikkez/f3-flash": "^1.0",
         "ikkez/f3-cortex": "^1.7"
+    },
+    "autoload": {
+        "files": [
+            "app/Helpers/cli_utils.php",
+            "app/Helpers/db_utils.php",
+            "app/Helpers/img_utils.php",
+            "app/Helpers/layout_utils.php",
+            "app/Helpers/str_utils.php"
+        ]
     }
 }

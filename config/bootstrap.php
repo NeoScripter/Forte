@@ -2,13 +2,7 @@
 
 declare(strict_types=1);
 
-use DB\SQL;
-
 require APP_DIR . '/vendor/autoload.php';
-
-// foreach (glob(APP_DIR . '/app/Helpers/*.php') as $filename) {
-//     require_once $filename;
-// }
 
 $hive = Base::instance();
 
@@ -24,22 +18,11 @@ $is_local = $hive->get('app_debug');
 $hive->set('DEBUG', $is_local ? 3 : 0);
 
 require APP_DIR . '/config/exception_config.php';
-require APP_DIR . '/app/Helpers/functions.php';
-
-$path = APP_DIR . '/db/database.sqlite';
-
-$db = new SQL(
-    "sqlite:$path"
-);
-
-$hive->set('DB', $db);
+require APP_DIR . '/config/database.php';
 
 $flash = \Flash::instance();
 $hive->set('FLASH', $flash);
 
 require APP_DIR . '/config/validation.php';
-
-// $hive->route('GET /api/seed [cli]', 'seeders\Seeder->run');
-// $hive->route('GET /@action [cli]', 'Http\Controllers\ConsoleController->@action');
 
 $hive->run();
