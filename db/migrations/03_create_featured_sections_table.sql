@@ -1,0 +1,10 @@
+
+CREATE TABLE IF NOT EXISTS featured_sections (
+    id  INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR(200) NOT NULL,
+    subtitle TEXT,
+    body TEXT,
+    html TEXT,
+    shown BOOLEAN,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

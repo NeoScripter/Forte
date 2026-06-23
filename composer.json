@@ -1,0 +1,11 @@
+{
+    "require": {
+        "bcosca/fatfree-core": "^3.9",
+        "bcosca/fatfree": "^3.9",
+        "ikkez/f3-falsum": "^2.8",
+        "n0nag0n/simple-job-queue": "^1.2",
+        "ikkez/f3-validation-engine": "^1.7",
+        "ikkez/f3-flash": "^1.0",
+        "ikkez/f3-cortex": "^1.7"
+    }
+}

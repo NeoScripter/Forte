@@ -1,0 +1,444 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'InstrumentSans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    /* --breakpoint-xs: 500px; */
+    /* --breakpoint-sm: 640px; */
+    /* --breakpoint-md: 768px; */
+    /* --breakpoint-lg: 1024px; */
+    /* --breakpoint-xl: 1280px; */
+    /* --breakpoint-2xl: 1536px; */
+
+    --breakpoint-xs: 31.25rem;
+    --breakpoint-sm: 40rem;
+    --breakpoint-md: 48rem;
+    --breakpoint-lg: 64rem;
+    --breakpoint-xl: 80rem;
+    --breakpoint-2xl: 96rem;
+
+    --color-background: var(--background);
+    --color-user-background: var(--user-background);
+    --color-foreground: var(--foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+    --color-slide-marker: var(--slide-marker);
+    --color-home-hero-bg: oklch(0.5136 0.0132 71.77);
+    --color-footer-bg: oklch(0.269 0 0);
+    --color-footer-text: oklch(0.8359 0 0);
+
+    --animate-slide-in: slide-in 600ms ease-in var(--slide-delay) forwards;
+
+    @keyframes slide-in {
+        0% {
+            opacity: 0;
+            transform: translateX(200%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+
+    --animate-slide-down: slide-down 250ms ease-in forwards;
+    @keyframes slide-down {
+        0% {
+            opacity: 0;
+            transform: translateY(-200%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+    --animate-slide-up: slide-up 750ms ease-in forwards;
+    @keyframes slide-up {
+        0% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-400%);
+        }
+    }
+
+    --animate-expand: expand 0.25s ease forwards;
+    @keyframes expand {
+        0% {
+            transform: scale(20%);
+        }
+    }
+    --animate-shrink: shrink 0.25s ease-out forwards;
+    @keyframes shrink {
+        100% {
+            transform: scale(0%);
+        }
+    }
+
+    --animate-slide-up: slide-up 0.3s ease-in forwards;
+    @keyframes slide-up {
+        0% {
+            transform: translateY(100%);
+        }
+        ,
+        100% {
+            transform: translateY(0%);
+        }
+    }
+
+    --animate-confirm-slide-down: confirm-slide-down 600ms
+        cubic-bezier(0.54, -0.8, 1, 0.9) forwards;
+    @keyframes confirm-slide-down {
+        100% {
+            transform: translateY(100%);
+        }
+    }
+
+    --animate-confirm-shrink-away: confirm-shrink-away 400ms ease-in forwards;
+    @keyframes confirm-shrink-away {
+        100% {
+            transform: scale(2%);
+            translate: 35vw -15vh;
+        }
+    }
+
+    --animate-cancel-blur-fall: cancel-blur-fall 500ms ease forwards;
+    @keyframes cancel-blur-fall {
+        100% {
+            filter: blur(10px);
+            transform: translateY(100%) rotate(-20deg);
+            opacity: 0;
+        }
+    }
+
+    --animate-fade-in: fade-in 0.75s ease-in forwards;
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    --animate-fade-out: fade-out 1s 4s ease-out forwards;
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    --animate-loading: loading 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    @keyframes loading {
+        50% {
+            opacity: 0.1;
+        }
+    }
+}
+
+.overtype-toolbar-button.overtype-toolbar-button {
+    color: var(--foreground);
+    /* background-color: var(--muted-foreground); */
+}
+.overtype-toolbar.overtype-toolbar {
+    background-color: var(--background) !important;
+    border-bottom: 1px solid var(--input) !important;
+}
+
+file-pond::part(attribution-link) {
+    display: none;
+}
+
+file-pond {
+    --default-border-radius: 0.5rem;
+}
+
+file-pond::part(drop-area) {
+    border: 1px solid var(--input);
+    border-radius: 0.5rem;
+    --entry-border-top: 1px solid var(--input);
+    --entry-border-right: 1px solid var(--input);
+    --entry-border-bottom: 1px solid var(--input);
+    --entry-border-left: 1px solid var(--input);
+}
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --user-background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.87 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.95 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --slide-marker: oklch(0.4459 0 129.63);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --user-background: oklch(0.2435 0 0);
+    --foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.459 0 0);
+    --ring: oklch(0.439 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.985 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.309 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --slide-marker: oklch(0.4459 0 129.63);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-user-background text-foreground transition-colors duration-1000 tracking-wide;
+    }
+
+    button {
+        @apply cursor-pointer;
+    }
+}
+
+.admin-shell {
+    @apply flex h-full flex-1 flex-col gap-4 rounded-xl p-4;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+
+    -webkit-hyphens: auto;
+}
+
+.break-text {
+    overflow-wrap: break-word;
+    hyphens: auto;
+
+    -webkit-hyphens: auto;
+}
+
+.slide-in {
+    --slide-delay: 100ms;
+    animation-name: slide-in;
+    animation-duration: 600ms;
+    animation-delay: var(--slide-delay);
+    animation-timing-function: linear(
+        0,
+        0.012 0.9%,
+        0.05 2%,
+        0.411 9.2%,
+        0.517 11.8%,
+        0.611 14.6%,
+        0.694 17.7%,
+        0.765 21.1%,
+        0.824 24.8%,
+        0.872 28.9%,
+        0.91 33.4%,
+        0.939 38.4%,
+        0.977 50.9%,
+        0.994 68.4%,
+        1
+    );
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(200%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+.skeleton {
+    @apply animate-pulse bg-gray-300 text-transparent;
+}
+
+.stack-content-closed {
+    transition:
+        max-height 300ms ease-out,
+        padding 300ms 150ms ease-out,
+        margin 300ms 150ms ease-out;
+}
+.stack-content-open {
+    transition:
+        max-height 750ms cubic-bezier(0.66, 0, 0.34, 1),
+        padding 300ms ease-in,
+        margin 300ms ease-in;
+}
+
+.slide-up-1 {
+    animation: slide-up-1 0.5s ease-out 4.5s;
+}
+@keyframes slide-up-1 {
+    100% {
+        transform: translateY(-125%);
+    }
+}
+.slide-up-2 {
+    animation: slide-up-2 0.5s ease-out 4.5s;
+}
+@keyframes slide-up-2 {
+    100% {
+        transform: translateY(-125%);
+    }
+}
+
+.ellipsis-multiline {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+}
+
+.content-visibility-auto {
+    content-visibility: auto;
+}
+.content-visibility-default {
+    content-visibility: visible;
+}
+
+.full-bleed-wrapper {
+    --padding: 0rem;
+    display: grid;
+    grid-template-columns:
+        1fr
+        calc(100% - (var(--padding) * 2))
+        1fr;
+
+    /* lg */
+    @media screen and (min-width: 64rem) {
+        --padding: 1rem;
+    }
+    /* xl */
+    @media screen and (min-width: 80rem) {
+        --padding: 8rem;
+    }
+}
+
+.full-bleed-wrapper > * {
+    grid-column: 2;
+}
+
+.full-bleed {
+    width: 100%;
+    grid-column: 1 / 4;
+}
+
+.full-bleed-padding > *:not(.full-bleed) {
+    margin-inline: var(--padding);
+}
+
+.adaptive-img-blur {
+    --dk-src: '';
+    --tb-src: '';
+    --mb-src: '';
+    background-image: var(--mb-src);
+
+    @media screen and (min-width: 31.25rem) {
+        background-image: var(--tb-src);
+    }
+
+    @media screen and (min-width: 64rem) {
+        background-image: var(--dk-src);
+    }
+}
