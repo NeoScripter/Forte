@@ -4,21 +4,31 @@ namespace Http\Controllers;
 
 use Http\Models\User;
 
+const SCREEN_WIDTH = 152;
+const METHOD_WIDTH = 12;
+
 class CliController
 {
     function routes(\Base $hive)
     {
         $routes = $hive->get('ROUTES');
-        $screen_width = 152;
-        $method_width = 16;
 
-        foreach ($routes as $url => $arr) {
-            foreach ($arr as $route) {
-                foreach ($route as $method => $rest) {
-                    [$contr, $name] = [$rest[0], $rest[3]];
-                    $method = str_pad($method, 16);
-                    $url = str_pad($url . ' ', $screen_width - ($method_width + 1 + strlen($contr)), '.');
-                    echo $method . $url . $contr . "\n";
+        foreach ($routes as $url => $methods) {
+            foreach ($methods as $route) {
+                foreach ($route as $method => $meta) {
+                    [$handler, $name] = [$meta[0], $meta[3]];
+                    $handler = str_replace('Http\Controllers\\', '', $handler);
+
+                    $color = match (trim($method)) {
+                        'GET' => 'info',
+                        'DELETE' => 'error',
+                        default => 'warning',
+                    };
+
+                    $prefix = str_pad($method, METHOD_WIDTH) . ' ';
+                    $suffix      = trim($name) !== '' ? " {$name} > {$handler}" : " {$handler}";
+                    $url = str_pad($url, SCREEN_WIDTH - (METHOD_WIDTH + strlen($suffix)), '.');
+                    echo cli_color($prefix, $color) . $url . $suffix . "\n";
                 }
             }
         }

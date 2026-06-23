@@ -185,18 +185,24 @@ function delete_files_recursive(array $files)
 }
 
 
-function cli_echo(string $message, string $type = 'success'): void
+function cli_color(string $message, string $status = 'success'): string
 {
-    $color = match ($type) {
+    $color = match ($status) {
         'success' => '32',
         'error'   => '31',
         'warning' => '33',
-        'info'    => '36',
+        'info'    => '34',
         default   => '0'
     };
 
-    echo "\033[{$color}m{$message}\033[0m\n";
+    return "\033[{$color}m{$message}\033[0m";
 }
+
+function cli_echo(string $message, string $status = 'success'): void
+{
+    echo cli_color($message . "\n", $status);
+}
+
 
 function is_image_attached(int $parent_id, string $parent_type, ?string $where = ''): bool
 {
