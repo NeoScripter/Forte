@@ -4,6 +4,18 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 function handle_error(\Base $hive)
 {
+    $is_cli = \Base::instance()->get('CLI') ?? false;
+
+    if ($is_cli) {
+        foreach ($hive->get('ERROR') as $err) {
+            if (empty($err)) {
+                continue;
+            }
+            cli_echo($err, 'error');
+        }
+        exit;
+    }
+
     if ($hive->app_debug === true) {
         Falsum\Run::handleError($hive);
     } else {

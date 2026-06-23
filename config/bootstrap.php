@@ -17,12 +17,13 @@ $hive->set('UI', APP_DIR . '/ui/views/');
 $hive->set('LOGS', APP_DIR . '/storage/logs/');
 define('UPLOAD_DIR', APP_DIR . '/public/storage/uploads/');
 
-$hive->config(APP_DIR . '/config/config.ini');
+$hive->config(APP_DIR . '/config/variables.ini');
+$hive->config(APP_DIR . '/config/routes.ini');
 
 $is_local = $hive->get('app_debug');
 $hive->set('DEBUG', $is_local ? 3 : 0);
 
-require APP_DIR . '/config/error_handler.php';
+require APP_DIR . '/config/exception_config.php';
 require APP_DIR . '/app/Helpers/functions.php';
 
 $path = APP_DIR . '/db/database.sqlite';
